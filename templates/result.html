@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Round Result</title>
+  <!-- Bootstrap 5 CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand">Rock-Paper-Scissors</span>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-center">Round Result</h2>
+          <hr>
+
+          <div class="text-center mb-3">
+            <h4>{{ result_msg }}</h4>
+          </div>
+
+          <div class="row">
+            <div class="col text-center">
+              <h5>You chose:</h5>
+              {% if user_choice == 1 %}
+                <p class="fs-4">Rock</p>
+              {% elif user_choice == 2 %}
+                <p class="fs-4">Paper</p>
+              {% elif user_choice == 3 %}
+                <p class="fs-4">Scissors</p>
+              {% endif %}
+            </div>
+
+            <div class="col text-center">
+              <h5>Computer chose:</h5>
+              {% if comp_choice == 1 %}
+                <p class="fs-4">Rock</p>
+              {% elif comp_choice == 2 %}
+                <p class="fs-4">Paper</p>
+              {% elif comp_choice == 3 %}
+                <p class="fs-4">Scissors</p>
+              {% endif %}
+            </div>
+          </div>
+
+          <hr>
+          <div class="d-flex justify-content-around my-3">
+            <div>
+              <h5>Your Score:</h5>
+              <span class="fs-4">{{ user_score }}</span>
+            </div>
+            <div>
+              <h5>Computer Score:</h5>
+              <span class="fs-4">{{ comp_score }}</span>
+            </div>
+          </div>
+
+          {% if winner_message %}
+            <div class="alert alert-info text-center" role="alert">
+              <strong>{{ winner_message }}</strong><br>
+              Click "Back to Game" to keep viewing or press "Quit" on the main page to reset.
+            </div>
+          {% endif %}
+
+          <div class="text-center mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">Back to Game</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rock-Paper-Scissors</title>
+  <!-- Bootstrap 5 CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand">Rock-Paper-Scissors</span>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2">
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title text-center">Rock-Paper-Scissors</h1>
+          <p class="card-text">
+            <strong>Instructions:</strong>
+            <br>
+            1. The goal is to be the first to reach <strong>10 points</strong>.<br>
+            2. Click a button to choose Rock, Paper, or Scissors.<br>
+            3. The computer will randomly pick its move.<br>
+            4. We compare the moves and update scores accordingly.<br>
+            5. If you want to restart the game at any point, click <strong>Quit</strong>.
+          </p>
+          <hr>
+
+          <!-- Display Scores -->
+          <div class="d-flex justify-content-around my-3">
+            <div>
+              <h5>Your Score:</h5>
+              <span class="fs-4">{{ user_score }}</span>
+            </div>
+            <div>
+              <h5>Computer Score:</h5>
+              <span class="fs-4">{{ comp_score }}</span>
+            </div>
+          </div>
+
+          {% if winner_message %}
+            <div class="alert alert-info text-center" role="alert">
+              <strong>{{ winner_message }}</strong>
+              <br>
+              The game is over. You can keep clicking moves if you want to see the score, 
+              or click "Quit" to reset everything.
+            </div>
+          {% endif %}
+
+          <!-- Choice Buttons -->
+          <form action="{{ url_for('play') }}" method="POST" class="text-center">
+            <button type="submit" name="choice" value="1" class="btn btn-primary btn-lg mx-1">Rock</button>
+            <button type="submit" name="choice" value="2" class="btn btn-success btn-lg mx-1">Paper</button>
+            <button type="submit" name="choice" value="3" class="btn btn-danger btn-lg mx-1">Scissors</button>
+            <button type="submit" name="choice" value="quit" class="btn btn-secondary btn-lg mx-1">Quit</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
